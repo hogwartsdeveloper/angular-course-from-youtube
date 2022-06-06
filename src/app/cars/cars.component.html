@@ -11,12 +11,9 @@
 <!--<app-car *ngFor="let car of cars"></app-car>-->
 
 <ul>
-  <li *ngFor="let car of cars; let idx = index">
-    <div
-      [ngStyle]="{backgroundColor: (idx + 1) % 2 === 0 ? 'red' : 'green', 'color': 'white'}"
-      [ngClass]="{'big-text': setBigCarText(car)}"
-    >
-      <b>{{idx + 1}}</b> - <i>{{car}}</i>
+  <li *ngFor="let date of dates; let idx = index">
+    <div>
+      <b>{{idx + 1}}</b> - {{ date.toDateString()}}
     </div>
   </li>
 </ul>
