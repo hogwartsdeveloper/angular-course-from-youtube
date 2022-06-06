@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {ICar} from "../cars/cars.component";
 
 @Component({
   selector: 'app-car',
@@ -6,10 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./car.component.scss']
 })
 export class CarComponent {
-  carName: string = 'Ford';
-  carYear: number = 2017;
+  @Input('carItem') car: ICar | undefined;
 
-  getName(): string {
-    return this.carName
-  }
+  private carItem = false;
 }
