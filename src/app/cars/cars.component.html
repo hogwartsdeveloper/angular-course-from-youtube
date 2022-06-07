@@ -1,12 +1,4 @@
-<input type="text" class="form-control" [(ngModel)]="carName">
-<input type="text" class="form-control" [(ngModel)]="carYear">
-<button class="btn btn-primary" (click)="addCar()">Добавить машину</button>
-<p *ngIf="!addCarStatus; else successStatus">Машина не добавлена</p>
-
-<ng-template #successStatus>
-  <p >Машина добавлена!</p>
-</ng-template>
-
+<p>Форма добавление машины</p>
+<app-add-car (onAddCar)="updateCarList($event)"></app-add-car>
 <hr>
-
 <app-car *ngFor="let car of cars" [carItem]="car"></app-car>

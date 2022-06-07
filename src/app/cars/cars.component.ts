@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 
 export interface ICar {
   name: string,
@@ -8,11 +8,11 @@ export interface ICar {
 @Component({
   selector: '.app-cars',
   templateUrl: './cars.component.html',
-  styleUrls: ['./cars.component.scss']
+  styleUrls: ['./cars.component.scss'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class CarsComponent {
-  carName = '';
-  carYear = 2019;
+
 
   cars: ICar[] = [
     {
@@ -43,9 +43,7 @@ export class CarsComponent {
   constructor() {
   }
 
-  addCar() {
-    this.cars.push({name: this.carName, year: this.carYear})
-    this.carName = '';
-    this.carYear = 2017;
+  updateCarList(car: ICar) {
+    this.cars.push(car)
   }
 }
