@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {ICar} from "../cars/cars.component";
 
 @Component({
@@ -7,23 +7,25 @@ import {ICar} from "../cars/cars.component";
   styleUrls: ['./add-car.component.scss']
 })
 export class AddCarComponent implements OnInit {
-  carName = '';
-  carYear = 2019;
   @Output('onAddCar') carEmitter = new EventEmitter<ICar>();
+  @ViewChild('carYearInput') carYearInput: ElementRef | undefined;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  addCar() {
+  addCar(carNameEl: HTMLInputElement) {
     this.carEmitter.emit({
-      name: this.carName,
-      year: this.carYear
+      name: carNameEl.value,
+      year: +this.carYearInput?.nativeElement.value
     });
 
-    this.carName = '';
-    this.carYear = 2017;
+    carNameEl.value = '';
+    // @ts-ignore
+    this.carYearInput?.nativeElement.value = 2023;
+
+    console.log(this.carYearInput)
   }
 
 }
