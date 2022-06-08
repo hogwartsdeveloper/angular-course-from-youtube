@@ -19,14 +19,14 @@ export class CarsComponent {
       name: 'Tesla',
       year: 2019
     },
-    {
-      name: 'Ford',
-      year: 2021
-    },
-    {
-      name: 'Mazda',
-      year: 2013
-    }
+    // {
+    //   name: 'Ford',
+    //   year: 2021
+    // },
+    // {
+    //   name: 'Mazda',
+    //   year: 2013
+    // }
   ]
 
   addCarStatus = false;
@@ -45,5 +45,13 @@ export class CarsComponent {
 
   updateCarList(car: ICar) {
     this.cars.push(car)
+  }
+
+  changeCarName(): void {
+    this.cars[0].name = 'Tesla MODEL 3'
+  }
+
+  deleteCar() {
+    this.cars.splice(0, 1);
   }
 }
