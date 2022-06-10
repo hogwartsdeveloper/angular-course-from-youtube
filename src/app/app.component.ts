@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Создание своей директивы.';
+  items = [1, 2, 3, 4, 5];
+  current = 1;
+
+  onClick(number: number) {
+    this.current = number
+  }
 }

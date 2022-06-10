@@ -6,7 +6,18 @@
     <div class="col-xs-12">
 <!--      <div class="app-cars"></div>-->
 
-      <h3 appBackground>{{title}}</h3>
+      <h3 appBackground="red" [defaultColor]="'blue'">{{title}}</h3>
+
+      <ul class="list-group">
+        <li *ngFor="let item of items" (click)="onClick(item)" class="list-group-item">{{item}}</li>
+      </ul>
+
+      <div [ngSwitch]="current">
+        <p *ngSwitchCase="1">1</p>
+        <p *ngSwitchCase="2">2</p>
+        <p *ngSwitchCase="3">3</p>
+        <p *ngSwitchDefault>default</p>
+      </div>
     </div>
   </div>
 </div>
