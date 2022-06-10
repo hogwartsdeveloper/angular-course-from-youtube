@@ -11,16 +11,20 @@
 <!--  <h2>{{ pi | number:'2.2-2' }}</h2>-->
 <!--  <hr>-->
 <!--  <h2>{{ money | currency:'USD':true }}</h2>-->
+<!--  <hr>-->
+<!--  <h2>{{ date }}</h2>-->
+<!--  <h2>{{ date | date }}</h2>-->
+<!--  <h2>{{ date | date:'fullDate' }}</h2>-->
+<!--  <h2>{{ date | date:'shortDate' }}</h2>-->
+<!--  <h2>{{ date | date:'shortTime' }}</h2>-->
+<!--  <hr>-->
+<!--  <h2>{{ amount }}</h2>-->
+<!--  <h2>{{ amount | percent }}</h2>-->
+<!--  <hr>-->
+<!--  <h2>{{ object }}</h2>-->
+<!--  <h2><pre>{{ object | json }}</pre></h2>-->
+
   <hr>
-  <h2>{{ date }}</h2>
-  <h2>{{ date | date }}</h2>
-  <h2>{{ date | date:'fullDate' }}</h2>
-  <h2>{{ date | date:'shortDate' }}</h2>
-  <h2>{{ date | date:'shortTime' }}</h2>
-  <hr>
-  <h2>{{ amount }}</h2>
-  <h2>{{ amount | percent }}</h2>
-  <hr>
-  <h2>{{ object }}</h2>
-  <h2><pre>{{ object | json }}</pre></h2>
+  <h2>{{ money | appPow:3:'=' }}</h2>
+  <h2>{{ money }}</h2>
 </div>
