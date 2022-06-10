@@ -1,24 +1,26 @@
-<!--<app-cars></app-cars>-->
-
-<!--<div app-cars></div>-->
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-<!--      <div class="app-cars"></div>-->
-
-      <h3 appBackground="red" [defaultColor]="'blue'">{{title}}</h3>
-
-      <ul class="list-group">
-        <li *ngFor="let item of items" (click)="onClick(item)" class="list-group-item">{{item}}</li>
-      </ul>
-
-      <div [ngSwitch]="current">
-        <p *ngSwitchCase="1">1</p>
-        <p *ngSwitchCase="2">2</p>
-        <p *ngSwitchCase="3">3</p>
-        <p *ngSwitchDefault>default</p>
-      </div>
-    </div>
-  </div>
+<div class="col-xs-8 col-xs-offset-2">
+<!--  <h2>{{ name }}</h2>-->
+<!--  <h2>{{ name | lowercase }}</h2>-->
+<!--  <h2>{{ name | uppercase }}</h2>-->
+<!--  <h2>{{ name | slice:0:3 }}</h2>-->
+<!--  <h2>{{ name | slice:3:6 | uppercase }}</h2>-->
+<!--  <hr>-->
+<!--  <h2>{{ pi }}</h2>-->
+<!--  <h2>{{ pi | number }}</h2>-->
+<!--  <h2>{{ pi | number:'1.3-4' }}</h2>-->
+<!--  <h2>{{ pi | number:'2.2-2' }}</h2>-->
+<!--  <hr>-->
+<!--  <h2>{{ money | currency:'USD':true }}</h2>-->
+  <hr>
+  <h2>{{ date }}</h2>
+  <h2>{{ date | date }}</h2>
+  <h2>{{ date | date:'fullDate' }}</h2>
+  <h2>{{ date | date:'shortDate' }}</h2>
+  <h2>{{ date | date:'shortTime' }}</h2>
+  <hr>
+  <h2>{{ amount }}</h2>
+  <h2>{{ amount | percent }}</h2>
+  <hr>
+  <h2>{{ object }}</h2>
+  <h2><pre>{{ object | json }}</pre></h2>
 </div>
-
