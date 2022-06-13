@@ -6,17 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  name = 'WebForMyself';
-  pi = Math.PI;
-  money = 350;
-  date = new Date();
-  amount = 0.45;
-  object = {
-    foo: 'bar',
-    baz: 'qux',
-    nested: {
-      xyz: 3,
-      numbers: [1, 2, 3]
-    }
-  }
+  searchCar: string = '';
+  cars = [
+    {name: 'Ford', descr: 'WFM 1'},
+    {name: 'Mazda', descr: 'WFM 2'},
+    {name: 'Tesla', descr: 'WFM 3'},
+    {name: 'Audi', descr: 'WFM 4'},
+    {name: 'Mercedes', descr: 'WFM 5'},
+    {name: 'BMW', descr: 'WFM 6'}
+  ]
 }
