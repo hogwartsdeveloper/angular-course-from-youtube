@@ -1,28 +1,20 @@
-import { Component } from '@angular/core';
-import {delay, Observable, of} from "rxjs";
+import {Component, OnInit} from '@angular/core';
 import {ICar} from "./cars/cars.component";
+import {CarsService} from "./services/cars.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [CarsService]
 })
-export class AppComponent {
-  searchCar: string = '';
-  cars: ICar[] = [
-    {name: 'Tesla', isSold: false},
-    {name: 'Tulpar', isSold: true},
-  ]
+export class AppComponent implements OnInit {
+  cars: ICar[] = [];
 
-  title: string = '';
+  constructor(private carService: CarsService) {
+  }
 
-  asyncTitle = of('Async Title 3 seconds').pipe(delay(3000));
-
-
-  addCarToList(carName: string) {
-    this.cars.push({
-      name: carName,
-      isSold: false
-    })
+  ngOnInit() {
+    this.cars = this.carService.cars;
   }
 }

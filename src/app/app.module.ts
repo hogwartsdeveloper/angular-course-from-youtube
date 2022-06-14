@@ -12,6 +12,7 @@ import {PowPipe} from "./pow.pipe";
 import { MyTestPipe } from './my-test.pipe';
 import { CarFilterPipe } from './pipe/car-filter.pipe';
 import { CarAddComponent } from './car-add/car-add.component';
+import {ConsoleService} from "./services/console.service";
 
 @NgModule({
     declarations: [
@@ -30,7 +31,7 @@ import { CarAddComponent } from './car-add/car-add.component';
         BrowserModule,
         FormsModule
     ],
-  providers: [],
+  providers: [ConsoleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

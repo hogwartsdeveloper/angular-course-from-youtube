@@ -10,8 +10,7 @@ import { ConsoleService } from '../services/console.service';
 @Component({
   selector: 'app-car',
   templateUrl: './car.component.html',
-  styleUrls: ['./car.component.scss'],
-  providers: [ConsoleService]
+  styleUrls: ['./car.component.scss']
 })
 export class CarComponent implements
   OnInit

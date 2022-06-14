@@ -1,22 +1,22 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit } from '@angular/core';
+import {CarsService} from "../services/cars.service";
 
 @Component({
   selector: 'app-car-add',
   templateUrl: './car-add.component.html',
-  styleUrls: ['./car-add.component.scss']
+  styleUrls: ['./car-add.component.scss'],
 })
 export class CarAddComponent implements OnInit {
 
-  @Output() onCarAdd = new EventEmitter<string>();
   carName = '';
 
-  constructor() { }
+  constructor(private carsService: CarsService) { }
 
   ngOnInit(): void {
   }
 
   addCar() {
-    this.onCarAdd.emit(this.carName);
+    this.carsService.addCar(this.carName)
     this.carName = ''
   }
 
