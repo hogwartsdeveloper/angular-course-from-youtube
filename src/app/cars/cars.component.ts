@@ -2,7 +2,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
 
 export interface ICar {
   name: string,
-  year: number
+  isSold: boolean
 }
 
 @Component({
@@ -12,22 +12,6 @@ export interface ICar {
   encapsulation: ViewEncapsulation.Emulated
 })
 export class CarsComponent {
-
-
-  cars: ICar[] = [
-    {
-      name: 'Tesla',
-      year: 2019
-    },
-    // {
-    //   name: 'Ford',
-    //   year: 2021
-    // },
-    // {
-    //   name: 'Mazda',
-    //   year: 2013
-    // }
-  ]
 
   addCarStatus = false;
 
@@ -41,17 +25,5 @@ export class CarsComponent {
 
 
   constructor() {
-  }
-
-  updateCarList(car: ICar) {
-    this.cars.push(car)
-  }
-
-  changeCarName(): void {
-    this.cars[0].name = 'Tesla MODEL 3'
-  }
-
-  deleteCar() {
-    this.cars.splice(0, 1);
   }
 }

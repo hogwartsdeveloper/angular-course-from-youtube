@@ -11,6 +11,7 @@ import { ColorDirective } from './directives/color.directive';
 import {PowPipe} from "./pow.pipe";
 import { MyTestPipe } from './my-test.pipe';
 import { CarFilterPipe } from './pipe/car-filter.pipe';
+import { CarAddComponent } from './car-add/car-add.component';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import { CarFilterPipe } from './pipe/car-filter.pipe';
         ColorDirective,
         PowPipe,
         MyTestPipe,
-        CarFilterPipe
+        CarFilterPipe,
+        CarAddComponent
     ],
     imports: [
         BrowserModule,

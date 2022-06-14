@@ -16,10 +16,6 @@ export class AddCarComponent implements OnInit {
   }
 
   addCar(carNameEl: HTMLInputElement) {
-    this.carEmitter.emit({
-      name: carNameEl.value,
-      year: +this.carYearInput?.nativeElement.value
-    });
 
     carNameEl.value = '';
     // @ts-ignore
