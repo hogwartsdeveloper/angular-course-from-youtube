@@ -20,6 +20,9 @@ export class AppComponent implements OnInit {
     }
   ];
 
+  defaultAnswer = 'no';
+  defaultCountry = 'ru';
+
   constructor() {
   }
 
