@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ICar} from "./cars/cars.component";
 import {CarsService} from "./services/cars.service";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
@@ -9,12 +9,23 @@ import {CarsService} from "./services/cars.service";
   providers: [CarsService]
 })
 export class AppComponent implements OnInit {
-  cars: ICar[] = [];
+  answers = [
+    {
+      type: 'yes',
+      text: 'Да'
+    },
+    {
+      type: 'no',
+      text: 'Нет'
+    }
+  ];
 
-  constructor(private carService: CarsService) {
+  constructor() {
   }
 
-  ngOnInit() {
-    this.cars = this.carService.cars;
+  ngOnInit() {}
+
+  submitForm(form: NgForm) {
+    console.log('Submit form', form)
   }
 }
