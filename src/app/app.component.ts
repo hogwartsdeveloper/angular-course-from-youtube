@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {CarsService} from "./services/cars.service";
-import {NgForm} from "@angular/forms";
+import {FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,6 @@ import {NgForm} from "@angular/forms";
   providers: [CarsService]
 })
 export class AppComponent implements OnInit {
-  @ViewChild('form') form: NgForm | undefined;
   answers = [
     {
       type: 'yes',
@@ -21,35 +20,21 @@ export class AppComponent implements OnInit {
     }
   ];
 
-  defaultAnswer = 'no';
-  defaultCountry = 'ru';
-
-  formData = {}
-  isSubmited = false;
+  form: FormGroup = new FormGroup({});
 
   constructor() {
   }
 
-  ngOnInit() {}
-
-  submitForm() {
-    this.isSubmited = true;
-    this.formData = this.form?.value;
-    this.form?.reset()
+  ngOnInit() {
+    this.form = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      pass: new FormControl('', Validators.required),
+      country: new FormControl('kz'),
+      answer: new FormControl('yes')
+    });
   }
 
-  addRandEmail() {
-    const randEmail = 'burabai@gmail.com';
-    // this.form?.setValue({
-    //   user: {
-    //     pass: '',
-    //     email: randEmail
-    //   },
-    //   country: '',
-    //   answer: ''
-    // })
-    this.form?.form.patchValue({
-      user: {email: randEmail}
-    })
+  onSubmit() {
+    console.log('Submited!', this.form)
   }
 }
