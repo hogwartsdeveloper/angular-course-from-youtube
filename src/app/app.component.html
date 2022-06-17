@@ -1,27 +1,32 @@
 <div class="col-xs-8 col-xs-offset-2">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div>
+    <div formGroupName="user">
       <div class="form-group">
         <label>Email</label>
         <input
           type="text"
           class="form-control"
-          [ngClass]="{error: form.get('email')?.invalid && form.get('email')?.touched}"
+          [ngClass]="{error: form.get('user.email')?.invalid && form.get('user.email')?.touched}"
           name="email"
           formControlName="email"
         >
-        <p *ngIf="form.get('email')?.invalid && form.get('pass')?.touched">Введите корректный email</p>
+        <p *ngIf="form.get('user.email')?.invalid && form.get('user.email')?.touched">Введите корректный email</p>
       </div>
       <div class="form-group">
         <label>Password</label>
         <input
           type="password"
           class="form-control"
-          [ngClass]="{error: form.get('pass')?.invalid && form.get('pass')?.touched}"
+          [ngClass]="{error: form.get('user.pass')?.invalid && form.get('user.pass')?.touched}"
           name="pass"
           formControlName="pass"
         >
-        <p *ngIf="form.get('pass')?.invalid && form.get('pass')?.touched">Password is not empty</p>
+        <p
+          *ngIf="form.get('user.pass')?.invalid && form.get('user.pass')?.touched"
+        >
+          <span *ngIf="form.get('user.pass').errors['required']">Password is not empty</span>
+          <span *ngIf="form.get('user.pass').errors['lengthError']">Пароль не должен быть меньше {{charsCount}}х символов!</span>
+        </p>
       </div>
     </div>
 
