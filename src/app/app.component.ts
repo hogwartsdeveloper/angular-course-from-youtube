@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {CarsService} from "./services/cars.service";
-import {FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
+import {AsyncValidatorFn, FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.form = new FormGroup({
       user: new FormGroup({
-        email: new FormControl('', [Validators.required, Validators.email]),
+        email: new FormControl('', [Validators.required, Validators.email], <AsyncValidatorFn>this.checkForEmail),
         pass: new FormControl('', [Validators.required, this.checkForLength.bind(this)]),
       }),
       country: new FormControl('kz'),
@@ -51,5 +51,19 @@ export class AppComponent implements OnInit {
     }
 
     return null;
+  }
+
+  checkForEmail(control: FormControl): Promise<any> {
+    return  new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (control.value === 'test@mail.ru') {
+          resolve({
+            'emailIsUsed': true
+          })
+        } else {
+          resolve(null)
+        }
+      }, 3000)
+    })
   }
 }
