@@ -13,6 +13,7 @@ import { MyTestPipe } from './my-test.pipe';
 import { CarFilterPipe } from './pipe/car-filter.pipe';
 import { CarAddComponent } from './car-add/car-add.component';
 import {ConsoleService} from "./services/console.service";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -30,7 +31,8 @@ import {ConsoleService} from "./services/console.service";
     imports: [
         BrowserModule,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        HttpClientModule
     ],
   providers: [ConsoleService],
   bootstrap: [AppComponent]
