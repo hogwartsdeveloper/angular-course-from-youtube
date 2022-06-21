@@ -17,4 +17,9 @@ export class CarsService {
     const data = { name, color }
     return this.http.post('http://localhost:3000/cars', data);
   }
+
+  updateCar(id: number, name: string, color: string): Observable<any> {
+    const data = { name, color }
+    return this.http.put(`http://localhost:3000/cars/${id}`, data)
+  }
 }

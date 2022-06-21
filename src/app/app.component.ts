@@ -16,6 +16,14 @@ export interface Cars {
   providers: [CarsService]
 })
 export class AppComponent implements OnInit {
+  colors = [
+    "red",
+    "blue",
+    "green",
+    "pink",
+    "yellow",
+    "grey"
+  ]
   cars: Cars[] = [];
   carName: string = '';
   carColor: string = '';
@@ -41,5 +49,28 @@ export class AppComponent implements OnInit {
       .subscribe((response) => this.cars.push(response));
     this.carName = '';
     this.carColor = '';
+  }
+
+  getRandColor() {
+    const randNum = Math.round(Math.random() * this.colors.length - 1);
+    console.log(randNum)
+    return this.colors[randNum];
+  }
+
+  setNewColor(id: number, name: string) {
+    console.log(this.getRandColor())
+    this.carsService
+      .updateCar(id, name, this.getRandColor())
+      .subscribe((res) => {
+        console.log(res.id)
+        this.cars = this.cars.map((c) => {
+          if (c.id === res.id) {
+            return res
+          } else {
+            return c
+          }
+        })
+        console.log(this.cars)
+      })
   }
 }
