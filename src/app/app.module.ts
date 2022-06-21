@@ -14,6 +14,7 @@ import { CarFilterPipe } from './pipe/car-filter.pipe';
 import { CarAddComponent } from './car-add/car-add.component';
 import {ConsoleService} from "./services/console.service";
 import { HttpClientModule } from '@angular/common/http';
+import {CarsService} from "./cars.service";
 
 @NgModule({
     declarations: [
@@ -34,7 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
         FormsModule,
         HttpClientModule
     ],
-  providers: [ConsoleService],
+  providers: [ConsoleService, CarsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
