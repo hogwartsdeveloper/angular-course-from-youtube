@@ -1,6 +1,13 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {CarsService} from "./cars.service";
 import {AsyncValidatorFn, FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
+import {HttpResponse} from "@angular/common/http";
+
+export interface Cars {
+  name: string;
+  color: string;
+  id: number;
+}
 
 @Component({
   selector: 'app-root',
@@ -9,7 +16,7 @@ import {AsyncValidatorFn, FormControl, FormGroup, NgForm, Validators} from "@ang
   providers: [CarsService]
 })
 export class AppComponent implements OnInit {
-  cars: any[] = [];
+  cars: Cars[] = [];
 
   constructor(private carsService: CarsService) {
   }
@@ -18,8 +25,11 @@ export class AppComponent implements OnInit {
   }
 
   loadCars() {
-    this.carsService.getCars().subscribe((response) => {
-      console.log(response)
+    this.carsService
+      .getCars()
+      .subscribe((response: Cars[]) => {
+      console.log(response);
+      this.cars = response;
     })
   }
 }
