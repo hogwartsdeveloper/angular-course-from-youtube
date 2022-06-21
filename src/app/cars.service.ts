@@ -12,4 +12,9 @@ export class CarsService {
   getCars(): Observable<any> {
     return this.http.get('http://localhost:3000/cars');
   }
+
+  addCar(name: string, color: string): Observable<any> {
+    const data = { name, color }
+    return this.http.post('http://localhost:3000/cars', data);
+  }
 }
