@@ -1,19 +1,26 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {catchError, Observable, of, throwError} from "rxjs";
-import {map} from "rxjs/operators"
+import {catchError, Observable, of, throwError, map, delay} from "rxjs";
 import {Cars} from "./app.component";
+
+interface Title {
+  value: string;
+}
 
 @Injectable()
 export class CarsService {
   constructor(private http: HttpClient) {
   }
 
+  getTitle(): Observable<any> {
+    return this.http.get<any>('http://localhost:3000/title').pipe(map(e => e.value), delay(3000))
+  }
+
   getCars(): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json; charset=utf8'
     });
-    return this.http.get('http://localhost:3100/cars', {
+    return this.http.get('http://localhost:3000/cars', {
       headers
     }).pipe(catchError((err) => {
       return throwError('сервер не доступен');

@@ -2,7 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {CarsService} from "./cars.service";
 import {AsyncValidatorFn, FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 import {HttpResponse} from "@angular/common/http";
-import {catchError, of, throwError} from "rxjs";
+import {catchError, Observable, of, throwError} from "rxjs";
+import {map} from "rxjs/operators";
 
 export interface Cars {
   name: string;
@@ -25,28 +26,22 @@ export class AppComponent implements OnInit {
     "yellow",
     "grey"
   ]
-  cars: Cars[] = [];
+  cars: any;
   carName: string = '';
   carColor: string = '';
   error: boolean = false;
   errorText: string = '';
+  appTitle$: Observable<any> = new Observable();
 
   constructor(private carsService: CarsService) {
   }
 
   ngOnInit() {
+    this.appTitle$ = this.carsService.getTitle()
   }
 
   loadCars() {
-    this.carsService
-      .getCars()
-      .subscribe((response: Cars[]) => {
-      console.log(response);
-      this.cars = response;
-    }, (err) => {
-        this.error = true;
-        this.errorText = err
-      })
+    this.cars = this.carsService.getCars()
   }
 
   addCar() {
@@ -67,7 +62,7 @@ export class AppComponent implements OnInit {
     this.carsService
       .updateCar(id, name, this.getRandColor())
       .subscribe((res) => {
-        this.cars = this.cars.map((c) => {
+        this.cars = this.cars.map((c: { id: any; }) => {
           if (c.id === res.id) {
             return res
           } else {
