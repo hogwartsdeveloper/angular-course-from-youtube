@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {CarsService} from "./cars.service";
 import {AsyncValidatorFn, FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 import {HttpResponse} from "@angular/common/http";
+import {catchError, of, throwError} from "rxjs";
 
 export interface Cars {
   name: string;
@@ -27,6 +28,8 @@ export class AppComponent implements OnInit {
   cars: Cars[] = [];
   carName: string = '';
   carColor: string = '';
+  error: boolean = false;
+  errorText: string = '';
 
   constructor(private carsService: CarsService) {
   }
@@ -40,7 +43,10 @@ export class AppComponent implements OnInit {
       .subscribe((response: Cars[]) => {
       console.log(response);
       this.cars = response;
-    })
+    }, (err) => {
+        this.error = true;
+        this.errorText = err
+      })
   }
 
   addCar() {
@@ -75,7 +81,24 @@ export class AppComponent implements OnInit {
     this.carsService
       .delete(car)
       .subscribe((res) => {
-        this.cars = this.cars.filter((c) => c.id !== res.id);
+        console.log('eeerr: ', res);
+      }, err => {
+        console.log('eee: ', err);
+        this.error = true;
+        this.errorText = err
       })
+      // .subscribe((
+      //   (res) => {
+      //     console.log('eeerr: ', res);
+      //   this.cars = this.cars.filter((c) => c.id !== res.id);
+      //
+      // }),
+      //   ((err) => {
+      //     console.log('eee: ', err);
+      //     this.error = true;
+      //     this.errorText = err
+      //     console.log(this.errorText);
+      //     console.log(this.error)
+      //   }))
   }
 }

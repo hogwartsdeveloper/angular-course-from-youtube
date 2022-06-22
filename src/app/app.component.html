@@ -12,4 +12,7 @@
       <button class="btn btn-info" (click)="deleteCar(car)">Удалить машину</button>
     </li>
   </ul>
+  <div *ngIf="error" class="alert alert-info" role="alert">
+    {{ errorText}}
+  </div>
 </div>

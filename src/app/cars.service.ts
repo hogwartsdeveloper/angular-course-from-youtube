@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable } from "rxjs";
+import {catchError, Observable, of, throwError} from "rxjs";
 import {map} from "rxjs/operators"
 import {Cars} from "./app.component";
 
@@ -13,9 +13,12 @@ export class CarsService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json; charset=utf8'
     });
-    return this.http.get('http://localhost:3000/cars', {
+    return this.http.get('http://localhost:3100/cars', {
       headers
-    });
+    }).pipe(catchError((err) => {
+      return throwError('сервер не доступен');
+      // return throwError(() => new Error())
+    }))
   }
 
   addCar(name: string, color: string): Observable<any> {
@@ -32,6 +35,6 @@ export class CarsService {
   }
 
   delete(car: Cars): Observable<any> {
-    return this.http.delete(`http://localhost:3000/cars/${car.id}`);
+    return this.http.delete(`http://localhost:3100/cars/${car.id}`);
   }
 }
