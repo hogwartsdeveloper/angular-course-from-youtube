@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable } from "rxjs";
 import {map} from "rxjs/operators"
 import {Cars} from "./app.component";
@@ -10,16 +10,28 @@ export class CarsService {
   }
 
   getCars(): Observable<any> {
-    return this.http.get('http://localhost:3000/cars');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf8'
+    });
+    return this.http.get('http://localhost:3000/cars', {
+      headers
+    });
   }
 
   addCar(name: string, color: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf8'
+    });
     const data = { name, color }
-    return this.http.post('http://localhost:3000/cars', data);
+    return this.http.post('http://localhost:3000/cars', data, {headers});
   }
 
   updateCar(id: number, name: string, color: string): Observable<any> {
     const data = { name, color }
     return this.http.put(`http://localhost:3000/cars/${id}`, data)
+  }
+
+  delete(car: Cars): Observable<any> {
+    return this.http.delete(`http://localhost:3000/cars/${car.id}`);
   }
 }

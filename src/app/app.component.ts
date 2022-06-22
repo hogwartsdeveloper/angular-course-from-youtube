@@ -58,11 +58,9 @@ export class AppComponent implements OnInit {
   }
 
   setNewColor(id: number, name: string) {
-    console.log(this.getRandColor())
     this.carsService
       .updateCar(id, name, this.getRandColor())
       .subscribe((res) => {
-        console.log(res.id)
         this.cars = this.cars.map((c) => {
           if (c.id === res.id) {
             return res
@@ -70,7 +68,14 @@ export class AppComponent implements OnInit {
             return c
           }
         })
-        console.log(this.cars)
+      })
+  }
+
+  deleteCar(car: Cars) {
+    this.carsService
+      .delete(car)
+      .subscribe((res) => {
+        this.cars = this.cars.filter((c) => c.id !== res.id);
       })
   }
 }
