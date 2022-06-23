@@ -17,18 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {CarsService} from "./cars.service";
 import { HomePageComponent } from './home-page/home-page.component';
 import { CarsPageComponent } from './cars-page/cars-page.component';
-import {RouterModule, Routes} from "@angular/router";
-
-const appRoutes: Routes = [
-  {
-    path: 'cars',
-    component: CarsPageComponent
-  },
-  {
-    path: '',
-    component: HomePageComponent
-  }
-]
+import {AppRoutingModule} from "./app-routing.module";
 
 @NgModule({
     declarations: [
@@ -50,7 +39,7 @@ const appRoutes: Routes = [
         ReactiveFormsModule,
         FormsModule,
         HttpClientModule,
-        RouterModule.forRoot(appRoutes)
+        AppRoutingModule
     ],
   providers: [ConsoleService, CarsService],
   bootstrap: [AppComponent]
