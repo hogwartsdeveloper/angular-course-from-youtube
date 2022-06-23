@@ -9,6 +9,24 @@ interface Title {
 
 @Injectable()
 export class CarsService {
+  cars = [
+    {
+      id: 1,
+      name: 'Lexus'
+    },
+    {
+      id: 2,
+      name: 'Tesla'
+    },
+    {
+      id: 3,
+      name: 'Tayota'
+    },
+    {
+      id: 4,
+      name: 'BMW'
+    }
+  ]
   constructor(private http: HttpClient) {
   }
 

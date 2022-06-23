@@ -15,6 +15,20 @@ import { CarAddComponent } from './car-add/car-add.component';
 import {ConsoleService} from "./services/console.service";
 import { HttpClientModule } from '@angular/common/http';
 import {CarsService} from "./cars.service";
+import { HomePageComponent } from './home-page/home-page.component';
+import { CarsPageComponent } from './cars-page/cars-page.component';
+import {RouterModule, Routes} from "@angular/router";
+
+const appRoutes: Routes = [
+  {
+    path: 'cars',
+    component: CarsPageComponent
+  },
+  {
+    path: '',
+    component: HomePageComponent
+  }
+]
 
 @NgModule({
     declarations: [
@@ -27,13 +41,16 @@ import {CarsService} from "./cars.service";
         PowPipe,
         MyTestPipe,
         CarFilterPipe,
-        CarAddComponent
+        CarAddComponent,
+        HomePageComponent,
+        CarsPageComponent
     ],
     imports: [
         BrowserModule,
         ReactiveFormsModule,
         FormsModule,
-        HttpClientModule
+        HttpClientModule,
+        RouterModule.forRoot(appRoutes)
     ],
   providers: [ConsoleService, CarsService],
   bootstrap: [AppComponent]
