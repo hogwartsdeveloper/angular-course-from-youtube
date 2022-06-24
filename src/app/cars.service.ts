@@ -12,19 +12,27 @@ export class CarsService {
   cars = [
     {
       id: 1,
-      name: 'Lexus'
+      name: 'Lexus',
+      year: 2017,
+      color: 'red'
     },
     {
       id: 2,
-      name: 'Tesla'
+      name: 'Tesla',
+      year: 2019,
+      color: 'black'
     },
     {
       id: 3,
-      name: 'Tayota'
+      name: 'Tayota',
+      year: 2020,
+      color: 'blue'
     },
     {
       id: 4,
-      name: 'BMW'
+      name: 'BMW',
+      year: 2021,
+      color: 'yellow'
     }
   ]
   constructor(private http: HttpClient) {

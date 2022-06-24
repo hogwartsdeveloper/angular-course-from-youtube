@@ -1,4 +1,7 @@
-<h2>Информация о машине {{id}}</h2>
-<h3>{{name}}</h3>
+<h3>ID машины: {{id}}</h3>
+<h3>Имя машины: {{name}}</h3>
+<h3 [ngStyle]="{color: color}">Цвет машины: {{color}}</h3>
+<h3>Год машины: {{year}}</h3>
+<p>{{hash}}</p>
 <hr>
-<a [routerLink]="['/cars', 8, 'Mazda']">Open Mazda</a>
+<a (click)="openMazda()">Open Mazda</a>
