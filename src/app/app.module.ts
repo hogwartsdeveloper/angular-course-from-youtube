@@ -14,14 +14,14 @@ import { CarFilterPipe } from './pipe/car-filter.pipe';
 import { CarAddComponent } from './car-add/car-add.component';
 import {ConsoleService} from "./services/console.service";
 import { HttpClientModule } from '@angular/common/http';
-import {CarsService} from "./cars.service";
 import { HomePageComponent } from './home-page/home-page.component';
-import { CarsPageComponent } from './cars-page/cars-page.component';
 import {AppRoutingModule} from "./app-routing.module";
-import { CarPageComponent } from './car-page/car-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {AuthService} from "./services/auth.service";
 import {AuthGuard} from "./services/auth-guard.service";
+import { HeaderComponent } from './header/header.component';
+import {CarsModule} from "./cars-page/cars.module";
+import {ColorDirectives} from "./shared/color.directive";
 
 @NgModule({
     declarations: [
@@ -30,24 +30,24 @@ import {AuthGuard} from "./services/auth-guard.service";
         CarComponent,
         AddCarComponent,
         BackgroundDirective,
-        ColorDirective,
+        ColorDirectives,
         PowPipe,
         MyTestPipe,
         CarFilterPipe,
         CarAddComponent,
         HomePageComponent,
-        CarsPageComponent,
-        CarPageComponent,
-        NotFoundComponent
+        NotFoundComponent,
+        HeaderComponent
     ],
     imports: [
         BrowserModule,
         ReactiveFormsModule,
         FormsModule,
         HttpClientModule,
-        AppRoutingModule
+        AppRoutingModule,
+        CarsModule
     ],
-  providers: [ConsoleService, CarsService, AuthService, AuthGuard],
+  providers: [ConsoleService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
