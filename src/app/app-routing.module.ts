@@ -6,6 +6,10 @@ const appRoutes: Routes = [
   {
     path: '',
     component: HomePageComponent
+  },
+  {
+    path: 'cars',
+    loadChildren: () => import('./cars-page/cars.module').then(module => module.CarsModule)
   }
 ]
 

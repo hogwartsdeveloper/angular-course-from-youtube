@@ -19,7 +19,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import {AuthService} from "./services/auth.service";
 import {AuthGuard} from "./services/auth-guard.service";
 import { HeaderComponent } from './header/header.component';
-import {CarsModule} from "./cars-page/cars.module";
 import { SharedModule } from "./shared/shared.module";
 
 @NgModule({
@@ -43,7 +42,6 @@ import { SharedModule } from "./shared/shared.module";
         FormsModule,
         HttpClientModule,
         AppRoutingModule,
-        CarsModule,
         SharedModule
     ],
   providers: [ConsoleService, AuthService, AuthGuard],
