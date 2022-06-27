@@ -7,7 +7,6 @@ import { CarComponent } from './car/car.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AddCarComponent } from './add-car/add-car.component';
 import {BackgroundDirective} from "./directives/background.directive";
-import { ColorDirective } from './directives/color.directive';
 import {PowPipe} from "./pow.pipe";
 import { MyTestPipe } from './my-test.pipe';
 import { CarFilterPipe } from './pipe/car-filter.pipe';
@@ -21,7 +20,7 @@ import {AuthService} from "./services/auth.service";
 import {AuthGuard} from "./services/auth-guard.service";
 import { HeaderComponent } from './header/header.component';
 import {CarsModule} from "./cars-page/cars.module";
-import {ColorDirectives} from "./shared/color.directive";
+import { SharedModule } from "./shared/shared.module";
 
 @NgModule({
     declarations: [
@@ -30,7 +29,6 @@ import {ColorDirectives} from "./shared/color.directive";
         CarComponent,
         AddCarComponent,
         BackgroundDirective,
-        ColorDirectives,
         PowPipe,
         MyTestPipe,
         CarFilterPipe,
@@ -45,7 +43,8 @@ import {ColorDirectives} from "./shared/color.directive";
         FormsModule,
         HttpClientModule,
         AppRoutingModule,
-        CarsModule
+        CarsModule,
+        SharedModule
     ],
   providers: [ConsoleService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
