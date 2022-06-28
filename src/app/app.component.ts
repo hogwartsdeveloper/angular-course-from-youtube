@@ -32,12 +32,33 @@ export interface Cars {
       transition('start <=> end', animate('800ms 0.5s ease-out')),
       transition('start => active', animate(400)),
       transition('active => end', animate(400))
+    ]),
+    trigger('multi', [
+      state('start', style({
+        width: '150px',
+        height: '150px',
+        border: '5px solid black'
+      })),
+      state('end', style({
+        width: '170px',
+        height: '170px',
+        background: 'blue'
+      })),
+      transition('start <=> end', [
+        style({
+          background: 'red'
+        }),
+        animate(1500, style({
+          background: 'yellow'
+        })),
+        animate(1000)
+      ])
     ])
   ]
 })
 export class AppComponent implements OnInit {
   clickedState = 'start';
-
+  multiState = 'start';
 
   constructor() {
   }
