@@ -20,6 +20,7 @@ import {AuthService} from "./services/auth.service";
 import {AuthGuard} from "./services/auth-guard.service";
 import { HeaderComponent } from './header/header.component';
 import { SharedModule } from "./shared/shared.module";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
     declarations: [
@@ -42,7 +43,8 @@ import { SharedModule } from "./shared/shared.module";
         FormsModule,
         HttpClientModule,
         AppRoutingModule,
-        SharedModule
+        SharedModule,
+        BrowserAnimationsModule
     ],
   providers: [ConsoleService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
