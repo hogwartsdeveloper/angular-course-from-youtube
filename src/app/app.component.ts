@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {animate, state, style, transition, trigger} from "@angular/animations";
-import {divTrigger} from "./app.animation";
+import {changeWidthTrigger, divTrigger} from "./app.animation";
 
 
 export interface Cars {
@@ -13,7 +13,7 @@ export interface Cars {
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  animations: [divTrigger]
+  animations: [divTrigger, changeWidthTrigger]
 })
 export class AppComponent implements OnInit {
   isVisible = false;
