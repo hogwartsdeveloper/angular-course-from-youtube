@@ -3,6 +3,8 @@
 <div
   *ngIf="isVisible"
   @divTrigger
+  (@divTrigger.start)="onStart($event)"
+  (@divTrigger.done)="onDone($event)"
   class="alert alert-danger"
 >Lorem ipsum dolor sit amet.</div>
 
